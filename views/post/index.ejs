@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD REST API</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/icon/css/all.css">
+    <script src="/javascripts/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div class="nav-bar">
+        <div class="title">
+            <span>CRUD REST API</span>
+        </div>
+        <div class="tabel-opt">
+            <a href="/" class="button unselected">
+                <i class="fa-solid fa-table"></i>Tabel User
+            </a>
+            <a href="/post" class="button selected">
+                <i class="fa-solid fa-table"></i>Tabel Post
+            </a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-content-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="col-first">
+                            <span>Id Post</span>
+                        </th>
+                        <th>
+                            <span>Title</span>
+                        </th>
+                        <th>
+                            <span>Content</span>
+                        </th>
+                        <th class="col-last">
+                            <span>Aksi</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <a href="/post/create-post-page" class="button tambah">
+            <i class="fa-solid fa-plus"></i>Tambah Post
+        </a>
+    </div>
+</body>
+
+</html>
+
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            method: 'GET',
+            url: '/post/read-post',
+            dataType: "json",
+            success: function (data) {
+                if (data) {
+                    for (let i = 0; i < data.length; i++) {
+                        $('tbody').append(
+                            '<tr>' +
+                            '<td td class= "col-first">' + data[i].id_post + '</td>' +
+                            '<td>' + data[i].title + '</td>' +
+                            '<td>' + data[i].content + '</td>' +
+                            '<td class="col-last">' +
+                            '<a href="/post/update-post-page/' + data[i].id_post + '" class="button small ubah"><i class="fa-solid fa-pen"></i>Ubah</a>' +
+                            '<button value="' + data[i].id_post + '" class="button small hapus"><i class= "fa-solid fa-trash" ></i>Hapus</button>' +
+                            '</td>' +
+                            '</tr>'
+                        )
+                    }
+                }
+            }
+        })
+        $(document).on('click', 'button.hapus', function () {
+            $.ajax({
+                method: 'DELETE',
+                url: '/post/delete-post',
+                data: { id_post: $(this).val() },
+                dataType: "json",
+                success: function () {
+                    window.location = "/post/"
+                }
+            })
+        })
+    })
+</script>

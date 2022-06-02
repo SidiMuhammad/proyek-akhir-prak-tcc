@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD REST API</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/icon/css/all.css">
+    <script src="/javascripts/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div class="nav-bar">
+        <div class="title">
+            <span>CRUD REST API</span>
+        </div>
+        <div class="tabel-opt">
+            <a href="/" class="button selected">
+                <i class="fa-solid fa-table"></i>Tabel User
+            </a>
+            <a href="/post" class="button unselected">
+                <i class="fa-solid fa-table"></i>Tabel Post
+            </a>
+        </div>
+    </div>
+    <div class="card form">
+        <div class="card-content-form">
+            <input type="hidden" name="id_user" id="id_user" value="<%= id_user %>">
+            <table>
+                <tbody>
+                    <tr>
+                        <td><label for="email">Email</label></td>
+                        <td>
+                            <div><input type="text" name="email" id="email" placeholder="email" value=""></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="user_name">Username</label></td>
+                        <td>
+                            <div><input type="text" name="user_name" id="user_name" placeholder="username" value="">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="password">Password</label></td>
+                        <td>
+                            <div><input type="text" name="password" id="password" placeholder="password" value="">
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button class="button ubah">
+            <i class="fa-solid fa-pen"></i>Ubah User
+        </button>
+    </div>
+</body>
+
+</html>
+
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            method: 'POST',
+            url: '/get-user',
+            data: { id_user: $('#id_user').val() },
+            dataType: "json",
+            success: function (data) {
+                $('#email').val(data[0].email)
+                $('#user_name').val(data[0].user_name)
+                $('#password').val(data[0].password)
+            }
+        })
+        $(document).on('click', 'button.ubah', function () {
+            $.ajax({
+                method: 'PUT',
+                url: '/update-user',
+                data: {
+                    id_user: $('#id_user').val(),
+                    email: $('#email').val(),
+                    user_name: $('#user_name').val(),
+                    password: $('#password').val(),
+                },
+                dataType: "json",
+                success: function () {
+                    window.location = "/"
+                }
+            })
+        })
+    })
+</script>

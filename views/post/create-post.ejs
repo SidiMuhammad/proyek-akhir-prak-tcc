@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD REST API</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/icon/css/all.css">
+    <script src="/javascripts/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div class="nav-bar">
+        <div class="title">
+            <span>CRUD REST API</span>
+        </div>
+        <div class="tabel-opt">
+            <a href="/" class="button unselected">
+                <i class="fa-solid fa-table"></i>Tabel User
+            </a>
+            <a href="/post" class="button selected">
+                <i class="fa-solid fa-table"></i>Tabel Post
+            </a>
+        </div>
+    </div>
+    <div class="card form">
+        <div class="card-content-form">
+            <table>
+                <tbody>
+                    <tr>
+                        <td><label for="title">Title</label></td>
+                        <td>
+                            <div><input type="text" name="title" id="title" placeholder="post title" value=""></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="content">Content</label></td>
+                        <td>
+                            <div><textarea name="content" id="content" placeholder="content of your post"></textarea>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button class="button tambah">
+            <i class="fa-solid fa-plus"></i>Tambah Post
+        </button>
+    </div>
+</body>
+
+</html>
+
+<script>
+    $(document).ready(function () {
+        $(document).on('click', 'button.tambah', function () {
+            $.ajax({
+                method: 'POST',
+                url: '/post/create-post',
+                data: {
+                    title: $('#title').val(),
+                    content: $('#content').val(),
+                },
+                dataType: "json",
+                success: function () {
+                    window.location = "/post/"
+                }
+            })
+        })
+    })
+</script>

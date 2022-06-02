@@ -1,0 +1,191 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    margin: 0;
+    background: #EEF1F6;
+}
+
+.nav-bar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(180deg, #673BE1, #3D8CF0);
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+}
+
+.title span {
+    margin: 20px;
+    font-weight: 700;
+    font-size: 24px;
+    color: #FFFFFF;
+}
+
+.tabel-opt {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin: auto;
+}
+
+.card {
+    width: 750px;
+    position: relative;
+    top: 120px;
+    margin: auto;
+    border-radius: 10px;
+    background: #FFFFFF;
+}
+
+.form {
+    width: 550px;
+}
+
+.card-content-table {
+    padding: 10px 0;
+}
+
+.card-content-form {
+    padding: 20px 20px 0 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    border-bottom: 1.5px solid #CCD5E2;
+}
+
+th {
+    display: table-cell;
+    text-align: left;
+    font-weight: 700;
+    font-size: 14px;
+    color: #494E6A;
+    padding: 10px;
+}
+
+th span {
+    white-space: nowrap;
+    padding-right: 10px;
+}
+
+.card-content-table tbody tr:hover {
+    background-color: #F5F7FA;
+}
+
+.card-content-table td {
+    word-break: break-all;
+    vertical-align: top;
+    font-weight: 700;
+    font-size: 12px;
+    color: #727491;
+    padding: 10px;
+}
+
+.card-content-form td {
+    vertical-align: top;
+    display: table-cell;
+    text-align: left;
+    font-weight: 700;
+    font-size: 14px;
+    color: #494E6A;
+    padding-bottom: 20px;
+}
+
+label {
+    padding: 7px 0;
+    display: inline-block;
+}
+
+input,
+textarea {
+    font-weight: 700;
+    font-size: 14px;
+    border: 1.5px solid #CCD5E2;
+    padding: 7px;
+    border-radius: 5px;
+    color: #727491;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+input,
+textarea:focus {
+    outline: none;
+}
+
+#content {
+    height: 200px;
+}
+
+.card-content-table .col-first {
+    padding-left: 20px;
+}
+
+.card-content-table .col-last {
+    padding-right: 20px;
+    min-width: 200px;
+}
+
+.button {
+    box-sizing: border-box;
+    display: inline-block;
+    margin: 0 0 20px 20px;
+    padding: 10px;
+    font-weight: 700;
+    font-size: 12px;
+    color: #FFFFFF;
+    border: 0;
+    border-radius: 10px;
+    text-decoration: none;
+    cursor: pointer;
+    min-width: 80px;
+}
+
+.button.small {
+    margin: 0 10px 0 0;
+    padding: 6px 10px;
+}
+
+.tambah {
+    background: linear-gradient(to right, #3470CB, #3D8AED);
+}
+
+.ubah {
+    margin-right: 5px;
+    background: linear-gradient(to right, #55AA87, #59C894);
+}
+
+.hapus {
+    background: linear-gradient(to right, #C00839, #DF4268);
+}
+
+.form-button {
+    display: inline-block;
+}
+
+.button.selected {
+    margin: 0 10px 20px 0;
+    color: #727491;
+    background: #FFFFFF;
+}
+
+.button.unselected {
+    margin: 0 10px 20px 0;
+    color: #727491;
+    background: #CCD5E2;
+}
+
+i {
+    margin-right: 10px;
+}

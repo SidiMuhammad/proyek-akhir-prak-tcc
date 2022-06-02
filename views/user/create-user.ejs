@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD REST API</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/icon/css/all.css">
+    <script src="/javascripts/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div class="nav-bar">
+        <div class="title">
+            <span>CRUD REST API</span>
+        </div>
+        <div class="tabel-opt">
+            <a href="/" class="button selected">
+                <i class="fa-solid fa-table"></i>Tabel User
+            </a>
+            <a href="/post" class="button unselected">
+                <i class="fa-solid fa-table"></i>Tabel Post
+            </a>
+        </div>
+    </div>
+    <div class="card form">
+        <div class="card-content-form">
+            <table>
+                <tbody>
+                    <tr>
+                        <td><label for="email">Email</label></td>
+                        <td>
+                            <div><input type="text" name="email" id="email" placeholder="email" value=""></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="user_name">Username</label></td>
+                        <td>
+                            <div><input type="text" name="user_name" id="user_name" placeholder="username" value="">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="password">Password</label></td>
+                        <td>
+                            <div><input type="text" name="password" id="password" placeholder="password" value=""></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button class="button tambah">
+            <i class="fa-solid fa-plus"></i>Tambah User
+        </button>
+        </form>
+    </div>
+</body>
+
+</html>
+
+<script>
+    $(document).ready(function () {
+        $(document).on('click', 'button.tambah', function () {
+            $.ajax({
+                method: 'POST',
+                url: '/create-user',
+                data: {
+                    email: $('#email').val(),
+                    user_name: $('#user_name').val(),
+                    password: $('#password').val(),
+                },
+                dataType: "json",
+                success: function () {
+                    window.location = "/"
+                }
+            })
+        })
+    })
+</script>
