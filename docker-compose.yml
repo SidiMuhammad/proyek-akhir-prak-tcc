@@ -1,0 +1,55 @@
+version: "3.9"
+
+services:
+  db1:
+    container_name: rest_api_db1
+    image: mysql:8.0
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password
+    volumes: 
+      - db-volume1:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: prak
+      MYSQL_DATABASE: rest_api_db1
+      MYSQL_USER: prak
+      MYSQL_PASSWORD: prak
+    networks: 
+      - app-network
+    ports:
+      - 3307:3306
+
+  db2:
+    container_name: rest_api_db2
+    image: mysql:8.0
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password
+    volumes: 
+      - db-volume2:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: prak
+      MYSQL_DATABASE: rest_api_db2
+      MYSQL_USER: prak
+      MYSQL_PASSWORD: prak
+    networks: 
+      - app-network
+    ports:
+      - 3308:3306
+
+  app:
+    container_name: rest_api_app
+    build: .
+    restart: always
+    depends_on:
+      - db1
+      - db2
+    networks:
+      - app-network
+    ports:
+      - 8000:8000
+
+networks:
+  app-network:
+
+volumes:
+  db-volume1:
+  db-volume2:
